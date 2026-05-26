@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SquatMasterBot — Полное руководство по командам</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7FD957;
+            --primary-dark: #6BC745;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --gray: #666666;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #E8E8E8;
+        }
+
+        /* Header */
+        header {
+            background: #323232;
+            color: var(--white);
+            padding: 0.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: visible;
+            min-height: 60px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+            position: relative;
+        }
+
+        .logo img {
+            height: 130px;
+            margin-top: -20px;
+            margin-bottom: -50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo span {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #E8E8E8;
+            min-height: 100vh;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .content-wrapper table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #323232;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                min-width: 200px;
+                z-index: 200;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo img {
+                height: 60px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            .logo span {
+                font-size: 1.5rem;
+            }
+
+            .content-wrapper h1 {
+                font-size: 24px;
+            }
+
+            .content-wrapper h2 {
+                font-size: 20px;
+            }
+
+            .content-wrapper li[style*="padding-left: 60px"],
+            .content-wrapper li[style*="padding-left: 30px"] {
+                padding-left: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="SportBot logo.png" alt="SportBot">
+                <span>SportBot</span>
+            </a>
+            <nav>
+                <button class="menu-toggle" onclick="document.querySelector('#cmd-nav').classList.toggle('open')">☰</button>
+                <ul class="nav-links" id="cmd-nav">
+                    <li><a href="#commands">Команды</a></li>
+                    <li><a href="#ranks">Ранги</a></li>
+                    <li><a href="#achievements">Достижения</a></li>
+                    <li><a href="#battles">Битвы</a></li>
+                    <li><a href="guide.html">📖 Руководство</a></li>
+                    <li><a href="https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892" target="_blank">⚔️ Бот</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+<h1 style="font-size: 36px; font-weight: bold; margin-bottom: 20px;">Оглавление</h1>
+<ul style="list-style-type: none; padding-left: 0;">
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#vse-komandy" style="color: #0066cc; text-decoration: none;">📋 Все команды</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#1-osnovnye-komandy" style="color: #0066cc; text-decoration: none;">1. Основные команды</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#11-registraciya-i-profil" style="color: #0066cc; text-decoration: none;">1.1 Регистрация и профиль</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#registraciya" style="color: #0066cc; text-decoration: none;">👤 Регистрация</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#profil-polzovatelya" style="color: #0066cc; text-decoration: none;">📝 Профиль пользователя</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#12-zapis-trenirovok" style="color: #0066cc; text-decoration: none;">1.2 Запись тренировок</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#zapis-uprazhnenij" style="color: #0066cc; text-decoration: none;">💪 Запись упражнений</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#2-statistika-i-progress" style="color: #0066cc; text-decoration: none;">2. Статистика и прогресс</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#21-lichnaya-statistika" style="color: #0066cc; text-decoration: none;">2.1 Личная статистика</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#statistika-za-period" style="color: #0066cc; text-decoration: none;">📊 Статистика за период</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#22-grafiki-trenirovok" style="color: #0066cc; text-decoration: none;">2.2 Графики тренировок</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#komanda-graph" style="color: #0066cc; text-decoration: none;">📈 Команда /graph</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#23-kalendar-trenirovok" style="color: #0066cc; text-decoration: none;">2.3 Календарь тренировок</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#komanda-calendar" style="color: #0066cc; text-decoration: none;">📅 Команда /calendar</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#3-sistema-rangov-i-opyta" style="color: #0066cc; text-decoration: none;">3. Система рангов и опыта</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#31-ierarhiya-rangov" style="color: #0066cc; text-decoration: none;">3.1 Иерархия рангов</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#32-kak-poluchit-opyt" style="color: #0066cc; text-decoration: none;">3.2 Как получить опыт</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#istochniki-opyta" style="color: #0066cc; text-decoration: none;">💎 Источники опыта</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#4-dostizheniya" style="color: #0066cc; text-decoration: none;">4. Достижения</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#41-kategorii-dostizhenij" style="color: #0066cc; text-decoration: none;">4.1 Категории достижений</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#serii-streak" style="color: #0066cc; text-decoration: none;">🔥 Серии</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#otzhimaniya-put-bogatyrya-total-reps" style="color: #0066cc; text-decoration: none;">💪 Отжимания — Путь богатыря</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#otzhimaniya-ispytanie-sily-max-reps" style="color: #0066cc; text-decoration: none;">💪 Отжимания — Испытание силы</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#podtyagivaniya-sila-medvedya-total-reps" style="color: #0066cc; text-decoration: none;">🦾 Подтягивания — Сила медведя</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#podtyagivaniya-ispytanie-vysoty-max-reps" style="color: #0066cc; text-decoration: none;">🦾 Подтягивания — Испытание высоты</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#prisedaniya-korni-duba-total-reps" style="color: #0066cc; text-decoration: none;">🦵 Приседания — Корни дуба</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#prisedaniya-stojkost-max-reps" style="color: #0066cc; text-decoration: none;">🦵 Приседания — Стойкость</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#press-dospehi-duha-total-reps" style="color: #0066cc; text-decoration: none;">🛡️ Пресс — Доспехи духа</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#press-nesgibaemyj-sterzhen-max-reps" style="color: #0066cc; text-decoration: none;">🛡️ Пресс — Несгибаемый стержень</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#zakalka-v-kuzne-workout-count" style="color: #0066cc; text-decoration: none;">⚔️ Закалка в кузне</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#referalnaya-sistema-referral" style="color: #0066cc; text-decoration: none;">🤝 Реферальная система</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#bratstvo-sily-social" style="color: #0066cc; text-decoration: none;">🤝 Братство силы</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#pedestal-slavy-leaderboard" style="color: #0066cc; text-decoration: none;">🏅 Пьедестал славы</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#42-ton-nagrady" style="color: #0066cc; text-decoration: none;">4.2 TON-награды</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#5-boevaya-sistema" style="color: #0066cc; text-decoration: none;">5. Боевая система</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#51-lichnye-monstry" style="color: #0066cc; text-decoration: none;">5.1 Личные монстры</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#dostupnye-monstry" style="color: #0066cc; text-decoration: none;">👹 Доступные монстры</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#mehanika-boya" style="color: #0066cc; text-decoration: none;">🎯 Механика боя</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#otobrazhenie-progressa" style="color: #0066cc; text-decoration: none;">📊 Отображение прогресса</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#52-rejd-bossy" style="color: #0066cc; text-decoration: none;">5.2 Рейд-боссы</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#mehanika-rejd-bossov" style="color: #0066cc; text-decoration: none;">👾 Механика рейд-боссов</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#tablica-liderov" style="color: #0066cc; text-decoration: none;">🏆 Таблица лидеров</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#avtomaticheskaya-proverka" style="color: #0066cc; text-decoration: none;">⏰ Автоматическая проверка</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#6-socialnye-funkcii" style="color: #0066cc; text-decoration: none;">6. Социальные функции</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#61-liderbordy" style="color: #0066cc; text-decoration: none;">6.1 Лидерборды</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#komanda-leaderboard" style="color: #0066cc; text-decoration: none;">🏆 Команда /leaderboard</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#62-podpiski" style="color: #0066cc; text-decoration: none;">6.2 Подписки</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#sistema-podpisok" style="color: #0066cc; text-decoration: none;">👥 Система подписок</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#63-referalnaya-sistema" style="color: #0066cc; text-decoration: none;">6.3 Реферальная система</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#priglashenie-druzej" style="color: #0066cc; text-decoration: none;">🤝 Приглашение друзей</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#7-sistema-serij" style="color: #0066cc; text-decoration: none;">7. Система серий</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#71-otslezhivanie-serij" style="color: #0066cc; text-decoration: none;">7.1 Отслеживание серий</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#72-sohranenie-serii" style="color: #0066cc; text-decoration: none;">7.2 Сохранение серии</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#8-personalnye-nastrojki" style="color: #0066cc; text-decoration: none;">8. Персональные настройки</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#komanda-settings" style="color: #0066cc; text-decoration: none;">⚙️ Команда /settings</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#9-pitanie-i-makrosy" style="color: #0066cc; text-decoration: none;">9. Питание и макросы</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#sistema-pitaniya" style="color: #0066cc; text-decoration: none;">🥗 Система питания</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#sozdanie-profilya-pitaniya" style="color: #0066cc; text-decoration: none;">📊 Создание профиля питания</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#logirovanie-priyoma-pishhi" style="color: #0066cc; text-decoration: none;">🍽️ Логирование приёма пищи</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#logirovanie-vesa" style="color: #0066cc; text-decoration: none;">⚖️ Логирование веса</a></li>
+<li style="margin: 8px 0; padding-left: 60px;"><a href="#itogi-za-period" style="color: #0066cc; text-decoration: none;">📈 Итоги за период</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#10-multiyazychnost" style="color: #0066cc; text-decoration: none;">10. Мультиязычность</a></li>
+<li style="margin: 8px 0; padding-left: 30px;"><a href="#podderzhka-yazykov" style="color: #0066cc; text-decoration: none;">🌍 Поддержка языков</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#nachalo-raboty" style="color: #0066cc; text-decoration: none;">🚀 Начало работы</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#podderzhka" style="color: #0066cc; text-decoration: none;">📞 Поддержка</a></li>
+<li style="margin: 8px 0; padding-left: 0px;"><a href="#vazhnye-primechaniya" style="color: #0066cc; text-decoration: none;">⚠️ Важные примечания</a></li>
+</ul>
+<hr style="border: 2px solid #333; margin: 30px 0;">
+<h1 id="squatmasterbot-polnoe-rukovodstvo-po-komandam" style="font-size: 32px; font-weight: bold; margin-top: 30px; margin-bottom: 15px;">SquatMasterBot — Полное руководство по командам</h1>
+<br>
+<blockquote style="border-left: 4px solid #ccc; padding-left: 15px; margin: 15px 0; color: #666; font-style: italic;"><strong>Фитнес-RPG в Telegram с TON-наградами</strong></blockquote>
+<blockquote style="border-left: 4px solid #ccc; padding-left: 15px; margin: 15px 0; color: #666; font-style: italic;">Превращай тренировки в эпическое приключение! Качайся и сражайся с боссами.</blockquote>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="vse-komandy" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">📋 Все команды</h2>
+<br>
+<table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+<thead>
+<tr style="background-color: #f4f4f4;">
+  <th style="text-align: left; padding: 8px 12px; border: 1px solid #ddd;">Команда</th>
+  <th style="text-align: left; padding: 8px 12px; border: 1px solid #ddd;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>start</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Начать путешествие</td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>calendar</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Календарь тренировок</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>dieta</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Правильное питание</td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>donate</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Щедрость украшает героя</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>graph [упражнение] [период]</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Графики тренировок 📊<br><small style="color: #666;">Упражнения: pull_up, push_up, squat, abs<br>Периоды: week, month, year</small></td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>help</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Тайный свиток знаний</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>language</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Частичная смена языка интерфейса</td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>privacy</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Политика конфиденциальности чат-бота</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>profile</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Профиль пользователя</td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>program</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Персональный тренер</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>referal</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Реферальная программа</td></tr>
+<tr style="background-color: #f9f9f9;"><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>settings</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Настройки уведомлений, отключение геймификации</td></tr>
+<tr><td style="padding: 8px 12px; border: 1px solid #ddd;"><code>unsubscribe</code></td><td style="padding: 8px 12px; border: 1px solid #ddd;">Отписаться от бота</td></tr>
+</tbody>
+</table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="1-osnovnye-komandy" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">1. Основные команды</h2>
+<br>
+<h3 id="11-registraciya-i-profil" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">1.1 Регистрация и профиль</h3>
+<br>
+<h4 id="registraciya" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">👤 Регистрация</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Автоматическая регистрация</strong> происходит при первом взаимодействии с ботом. Система создаёт профиль и назначает начальный ранг <strong>"Зерно"</strong> (Seed).</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что происходит при регистрации:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Создание профиля с уникальным Telegram ID</li>
+<li style="margin: 5px 0;">Присвоение начального ранга "Зерно"</li>
+<li style="margin: 5px 0;">Установка языка по умолчанию (русский)</li>
+<li style="margin: 5px 0;">Обнуление всех счётчиков (0 тренировок, 0 опыта, 0 TON)</li>
+</ul>
+<br>
+<h4 id="profil-polzovatelya" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📝 Профиль пользователя</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Команда:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/profile</code>  </p>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Синонимы:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/профиль</code>, <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/p</code></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что показывает:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">📝 Имя пользователя</li>
+<li style="margin: 5px 0;">📈 Возраст</li>
+<li style="margin: 5px 0;">📭 Пол (мужчина/женщина)</li>
+<li style="margin: 5px 0;">🌐 Язык интерфейса (русский/English/українська)</li>
+<li style="margin: 5px 0;">💵 Баланс TON-токенов</li>
+<li style="margin: 5px 0;">⏰ Предпочитаемое время тренировки</li>
+<li style="margin: 5px 0;">🏋️ <strong>Прогресс по упражнениям</strong> (всего/максимум за тренировку):</li>
+<li style="margin: 5px 0;">Отжимания</li>
+<li style="margin: 5px 0;">Подтягивания</li>
+<li style="margin: 5px 0;">Приседания</li>
+<li style="margin: 5px 0;">Пресс</li>
+<li style="margin: 5px 0;">⚔ Текущий ранг</li>
+<li style="margin: 5px 0;">💎 Опыт (текущий/требуется до следующего ранга)</li>
+<li style="margin: 5px 0;">Прогресс-бар до следующего ранга</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример вывода:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+📝 Имя: Иван Богатырь
+📈 Возраст: 28
+📭 Пол: мужчина
+🌐 Язык: русский
+💵 Баланс: 5.2 TON
+⏰ Время тренировки: 18:00
+
+🏋️ Прогресс
+Всего/максимум
+* отжиманий: 1,250/85
+* подтягиваний: 340/25
+* приседаний: 2,100/150
+* пресс: 890/60
+
+⚔  Ранг: Дружинник
+💎 Опыт: 3,450/5,000
+████████░░░░░░░░ 69%
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="12-zapis-trenirovok" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">1.2 Запись тренировок</h3>
+<br>
+<h4 id="zapis-uprazhnenij" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">💪 Запись упражнений</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Типы упражнений:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">🔥 <strong>Отжимания</strong> (push-ups) — коэффициент опыта: 0.5</li>
+<li style="margin: 5px 0;">💪 <strong>Подтягивания</strong> (pull-ups) — коэффициент опыта: 1.0</li>
+<li style="margin: 5px 0;">🦵 <strong>Приседания</strong> (squats) — коэффициент опыта: 0.3</li>
+<li style="margin: 5px 0;">🛡️ <strong>Пресс</strong> (abs) — коэффициент опыта: 0.4</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что происходит после записи:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">1. ✅ Подтверждение записи с общим количеством повторений за день</p>
+<p style="margin: 10px 0; line-height: 1.6;">2. 🎖️ Проверка на новые достижения (если разблокированы)</p>
+<p style="margin: 10px 0; line-height: 1.6;">3. ⚔️ Автоматическое нанесение урона активному монстру или рейд-боссу</p>
+<p style="margin: 10px 0; line-height: 1.6;">4. 🔥 Обновление серии тренировок</p>
+<p style="margin: 10px 0; line-height: 1.6;">5. 💎 Начисление опыта (повышение ранга при достаточном XP)</p>
+<p style="margin: 10px 0; line-height: 1.6;">6. 📊 Обновление личных и глобальных статистик</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример ответа бота:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Твоя тренировка на сегодня: Отжимания (50 раз). 
+Всего повторений — 50.
+
+🔥 Серия: 7 дней подряд!
+💎 Опыт: 3,475/5,000
+
+⚔️ Монстр: Слизень
+❤️ HP: 35/50
+💥 Нанесено урона: 15
+
+🏆 Новое достижение: Поднял камень - Сделай 20 отжиманий за одну тренировку (Награда: 0.5 TON)
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="2-statistika-i-progress" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">2. Статистика и прогресс</h2>
+<br>
+<h3 id="21-lichnaya-statistika" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">2.1 Личная статистика</h3>
+<br>
+<h4 id="statistika-za-period" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📊 Статистика за период</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что показывает:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Общее количество повторений за период по каждому упражнению</li>
+<li style="margin: 5px 0;">Максимальный результат за одну тренировку</li>
+<li style="margin: 5px 0;">Количество тренировочных дней</li>
+<li style="margin: 5px 0;">Процент выполнения личных целей (если установлены)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как получить:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Статистика доступна через профиль (<code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/profile</code>) или через графики (<code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/graph</code>)</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="22-grafiki-trenirovok" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">2.2 Графики тренировок</h3>
+<br>
+<h4 id="komanda-graph" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📈 Команда `/graph`</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Формат:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/graph [упражнение] [период]</code></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Доступные упражнения:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">pushups</code> — отжимания</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">pullups</code> — подтягивания</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">squats</code> — приседания</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">abs</code> — пресс</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Доступные периоды:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">week</code> — 7 дней</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">month</code> — 30 дней</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">year</code> — 12 месяцев</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Примеры использования:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+/graph
+/graph pushups
+/graph pushups week
+/graph pullups month
+/graph squats year
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Интерактивное меню:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">1. Команда без параметров → выбор упражнения через кнопки</p>
+<p style="margin: 10px 0; line-height: 1.6;">2. Команда с упражнением → выбор периода через кнопки</p>
+<p style="margin: 10px 0; line-height: 1.6;">3. Команда с обоими параметрами → мгновенная генерация графика</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Технология:</strong> Графики генерируются через <strong>Quickchart.io</strong> (Chart.js) и отправляются как изображения прямо в чат.</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="23-kalendar-trenirovok" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">2.3 Календарь тренировок</h3>
+<br>
+<h4 id="komanda-calendar" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📅 Команда `/calendar`</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Описание:</strong> Открывает интерактивный <strong>Telegram Mini App</strong> с календарём тренировок.</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Функции:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Просмотр истории тренировок по датам</li>
+<li style="margin: 5px 0;">Визуальные индикаторы дней с тренировками</li>
+<li style="margin: 5px 0;">Детальная информация при клике на дату</li>
+<li style="margin: 5px 0;">Быстрый переход между месяцами</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как использовать:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+/calendar
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;">Бот отправит кнопку "📅 Календарь", которая откроет Mini App с интерактивным календарём.</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что показывается при выборе даты:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Список всех упражнений за день</li>
+<li style="margin: 5px 0;">Количество повторений по каждому упражнению</li>
+<li style="margin: 5px 0;">Общая сумма повторений за день</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="3-sistema-rangov-i-opyta" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">3. Система рангов и опыта</h2>
+<br>
+<h3 id="31-ierarhiya-rangov" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">3.1 Иерархия рангов</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>24-уровневая система</strong> с прогрессией от новичка до божества:</p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">№</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Ранг</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название (RU)</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Требуется XP</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">1</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Seed</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Зерно</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">2</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Sprout</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Росток</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">3</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Youngster</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Малец</td>
+<td style="border: 1px solid #ddd; padding: 12px;">300</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">4</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Novice</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Новичок</td>
+<td style="border: 1px solid #ddd; padding: 12px;">600</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">5</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Youth</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Отрок</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">6</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Man</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Мужик</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,500</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">7</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Militiaman</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Ополченец</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2,200</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">8</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Decurion</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Десятник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">3,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">9</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Kozhemyaka</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Кожемяка</td>
+<td style="border: 1px solid #ddd; padding: 12px;">4,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Warrior</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Ратник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5,200</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">11</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Centurion</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сотник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">6,600</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">12</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Druzhinnik</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Дружинник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">8,200</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">13</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Bogatyr</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Богатырь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">14</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Varangian</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Варяг</td>
+<td style="border: 1px solid #ddd; padding: 12px;">12,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">15</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Body Smith</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Кузнец тела</td>
+<td style="border: 1px solid #ddd; padding: 12px;">14,500</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">16</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Thousandman</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Тысячник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">17,500</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">17</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Master</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Хозяин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">21,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">18</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Voivode</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Воевода</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">19</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Grey Wolf</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Серый волк</td>
+<td style="border: 1px solid #ddd; padding: 12px;">30,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">20</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Bear</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Медведь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">36,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">21</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Fierce Beast</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Лютый зверь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">43,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">22</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Leshy</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Леший</td>
+<td style="border: 1px solid #ddd; padding: 12px;">51,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">23</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Volkhv</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Волхв</td>
+<td style="border: 1px solid #ddd; padding: 12px;">60,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">24</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Steel Bear</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Стальной Медведь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">70,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">25</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Son of Perun</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сын Перуна</td>
+<td style="border: 1px solid #ddd; padding: 12px;">81,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">26</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Cyber Knight</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Кибервитязь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">93,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">27</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Ancient Power</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Древняя мощь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">106,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">28</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Cyber Bear</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Кибер-медведь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">120,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">29</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Deity</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Божество</td>
+<td style="border: 1px solid #ddd; padding: 12px;">135,000</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">30</td>
+<td style="border: 1px solid #ddd; padding: 12px;">???</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Кто ты, тварь?!</td>
+<td style="border: 1px solid #ddd; padding: 12px;">150,000+</td>
+</tr>
+</tbody></table>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Прогрессия ранга:</strong> При накоплении достаточного опыта происходит автоматическое повышение с уведомлением:</p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Поздравляю! Твой ранг повышен: Ратник → Сотник.
+До следующего ранга осталось набрать опыта: 1,400.
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="32-kak-poluchit-opyt" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">3.2 Как получить опыт</h3>
+<br>
+<h4 id="istochniki-opyta" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">💎 Источники опыта</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>1. Тренировки</strong> (основной источник)</p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+XP = количество_повторений × коэффициент_упражнения
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Коэффициенты упражнений:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Отжимания: <strong>0.5</strong> (50 отжиманий = 25 XP)</li>
+<li style="margin: 5px 0;">Подтягивания: <strong>1.0</strong> (10 подтягиваний = 10 XP)</li>
+<li style="margin: 5px 0;">Приседания: <strong>0.3</strong> (100 приседаний = 30 XP)</li>
+<li style="margin: 5px 0;">Пресс: <strong>0.4</strong> (50 пресса = 20 XP)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>2. Рефералы</strong> (бонусный источник)</p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">За каждого приглашённого друга: <strong>+50 XP</strong></li>
+<li style="margin: 5px 0;">Бонус действует при регистрации реферала</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример расчёта дневного опыта:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Тренировка за день:
+- 50 отжиманий = 50 × 0.5 = 25 XP
+- 10 подтягиваний = 10 × 1.0 = 10 XP
+- 100 приседаний = 100 × 0.3 = 30 XP
+- 40 пресса = 40 × 0.4 = 16 XP
+
+Итого: 81 XP за день
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="4-dostizheniya" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">4. Достижения</h2>
+<br>
+<h3 id="41-kategorii-dostizhenij" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">4.1 Категории достижений</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>80+ уникальных достижений</strong> в 9 категориях:</p>
+<br>
+<h4 id="serii-streak" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🔥 Серии</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Достижения за последовательные дни тренировок:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Дней</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Искра</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 дней подряд без перерыва</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Пламя</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20 дней стабильных тренировок</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Пожар силы</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 дней настоящей силы</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+</tbody></table>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Важно:</strong> Серия сбрасывается при пропуске дня (более 24 часов без тренировки).</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="otzhimaniya-put-bogatyrya-total-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">💪 Отжимания — Путь богатыря</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Всего повторений</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Оруженосец</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Первые шаги юного воина</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Дружинник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Воин княжеской дружины</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Витязь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Отважный воин Руси</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Богатырь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Легендарный силач былин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Кибер-воин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Усилен технологиями</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Титан механики</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Человек-машина силы</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Квантовый колосс</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Превзошел физику</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="otzhimaniya-ispytanie-sily-max-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">💪 Отжимания — Испытание силы</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Макс. за тренировку</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Поднял камень</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сделай 20 отжиманий</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Поднял бревно</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сделай 50 отжиманий</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Поднял валун</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сделай 100 отжиманий</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Перевернул телегу</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сделай 200 отжиманий</td>
+<td style="border: 1px solid #ddd; padding: 12px;">200</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Сдвинул гору</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сделай 500 отжиманий</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="podtyagivaniya-sila-medvedya-total-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🦾 Подтягивания — Сила медведя</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Всего повторений</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Хватка медвежонка</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Детеныш учится хватать</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Лесной охотник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Ловкий и сильный</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Медведь-воин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сила дикого зверя</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Царь зверей</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Властелин тайги</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2,500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Кибер-медведь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Железные когти</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Страж небес</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Достиг облаков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Покоритель галактик</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Космическая мощь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="podtyagivaniya-ispytanie-vysoty-max-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🦾 Подтягивания — Испытание высоты</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Макс. за тренировку</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Залез на дерево</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Начало восхождения</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Забрался на холм</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 подтягиваний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Покорил скалу</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 подтягиваний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Взошел на гору</td>
+<td style="border: 1px solid #ddd; padding: 12px;">15 подтягиваний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">15</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Достиг облаков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 подтягиваний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="prisedaniya-korni-duba-total-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🦵 Приседания — Корни дуба</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Всего повторений</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Росток дуба</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Зарождение силы</td>
+<td style="border: 1px solid #ddd; padding: 12px;">200</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Молодой дуб</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Крепнущие корни</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Столетний дуб</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Несгибаемый вечный</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2,500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Гора-богатырь</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Твердость камня</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Стальной гигант</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Металлическая основа</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Колосс империи</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Фундамент миров</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Планетарный атлас</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Держишь планеты</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="prisedaniya-stojkost-max-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🦵 Приседания — Стойкость</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Макс. за тренировку</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Устоял под ветром</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 приседаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Выдержал бурю</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100 приседаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Пережил землетрясение</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250 приседаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Держит небосвод</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500 приседаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Основа вселенной</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1000 приседаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="press-dospehi-duha-total-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🛡️ Пресс — Доспехи духа</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Всего повторений</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Кольчуга ученика</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Первая защита тела</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Княжеская кираса</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Доспехи знатного воина</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Латы витязя</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Защита храброго</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Доспехи богатыря</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Непробиваемая защита</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Нано-броня</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Технологическая защита</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Титановый щит</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Металлическая стена</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Квантовое поле</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Энергетический щит</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="press-nesgibaemyj-sterzhen-max-reps" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🛡️ Пресс — Несгибаемый стержень</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Макс. за тренировку</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Гибкая лоза</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20 повторений</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Стальной прут</td>
+<td style="border: 1px solid #ddd; padding: 12px;">30 повторений</td>
+<td style="border: 1px solid #ddd; padding: 12px;">30</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Меч-кладенец</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100 повторений</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Алмазный стержень</td>
+<td style="border: 1px solid #ddd; padding: 12px;">200 повторений</td>
+<td style="border: 1px solid #ddd; padding: 12px;">200</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Ось мироздания</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500 повторений</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="zakalka-v-kuzne-workout-count" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">⚔️ Закалка в кузне</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Достижения за количество тренировок:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Тренировок</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Первый удар молота</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Первая тренировка</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Ученик кузни</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Закалка начинается</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Подмастерье</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Обучение у мастеров</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Кузнец своего тела</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Выкован в огне испытаний</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Мастер-оружейник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Создаешь совершенство</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Кибер-кузнец</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Сплав плоти и металла</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Архитектор эволюции</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Создаешь новое</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1,000</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Творец бессмертных</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Божественный уровень</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2,500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="referalnaya-sistema-referral" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🤝 Реферальная система</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Достижения за приглашённых друзей:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Рефералов</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Позвал товарища</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Пригласил первого друга</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Отряд формируется</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Трое уже с тобой</td>
+<td style="border: 1px solid #ddd; padding: 12px;">3</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Командир десятки</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Командуешь отрядом из 10 воинов</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Сотник</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Под твоим началом 25 воинов</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Воевода</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Ведёшь 50 бойцов</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Князь-собиратель</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Объединил 100 воинов</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Царь-объединитель</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Империя из 250 человек</td>
+<td style="border: 1px solid #ddd; padding: 12px;">250</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Создатель легиона</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Легендарная армия из 500 воинов</td>
+<td style="border: 1px solid #ddd; padding: 12px;">500</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="bratstvo-sily-social" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🤝 Братство силы</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Достижения за социальные действия:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Условие</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Нашёл товарища</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Подпишись на 1 пользователя</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 подписка</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Дружина собрана</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Подпишись на 5 пользователей</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 подписок</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Уважаемый воин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Получи 5 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Атаман ватаги</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Получи 25 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">25 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Князь земли</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Получи 100 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100 подписчиков</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Герой народа</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 подписчиков + топ-10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Комбо условие</td>
+<td style="border: 1px solid #ddd; padding: 12px;">20 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h4 id="pedestal-slavy-leaderboard" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🏅 Пьедестал славы</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Достижения за места в рейтинге:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Условие</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Вступил в бой</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Попади в лидерборд</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Любое место</td>
+<td style="border: 1px solid #ddd; padding: 12px;">0.5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Войско избранных</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Топ-10 по любому упражнению</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Топ-10</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Дружина князя</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Топ-5 по упражнению</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Топ-5</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Серебряный щит</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 место в лидерборде</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 место</td>
+<td style="border: 1px solid #ddd; padding: 12px;">5 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Золотая корона</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 место в лидерборде</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 место</td>
+<td style="border: 1px solid #ddd; padding: 12px;">10 TON</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Триумфатор</td>
+<td style="border: 1px solid #ddd; padding: 12px;">Первый в 3 упражнениях</td>
+<td style="border: 1px solid #ddd; padding: 12px;">3× 1 место</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50 TON</td>
+</tr>
+</tbody></table>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="42-ton-nagrady" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">4.2 TON-награды</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>💰 Все достижения награждают криптовалютой TON</strong></p>
+<br>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Награды автоматически начисляются на баланс при разблокировке</li>
+<li style="margin: 5px 0;">Баланс можно посмотреть в профиле (<code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/profile</code>)</li>
+<li style="margin: 5px 0;">TON используется для:</li>
+<li style="margin: 5px 0;">✅ Сохранения серии при пропуске (1 TON за 1 день, макс. 2 дня)</li>
+<li style="margin: 5px 0;">🎁 Будущие функции (магазин предметов, улучшений, скинов)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Суммарно доступно:</strong> <strong>500+ TON</strong> за все достижения!</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="5-boevaya-sistema" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">5. Боевая система</h2>
+<br>
+<h3 id="51-lichnye-monstry" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">5.1 Личные монстры</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Концепция:</strong> У каждого пользователя свой персональный монстр. Тренировки наносят урон монстру. Победа = TON-награда!</p>
+<br>
+<h4 id="dostupnye-monstry" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">👹 Доступные монстры</h4>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Название</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Эмодзи</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">HP</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Награда</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Время жизни</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Слизень</td>
+<td style="border: 1px solid #ddd; padding: 12px;">🟢</td>
+<td style="border: 1px solid #ddd; padding: 12px;">50</td>
+<td style="border: 1px solid #ddd; padding: 12px;">1 TON</td>
+<td style="border: 1px solid #ddd; padding: 12px;">24 часа</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Гоблин</td>
+<td style="border: 1px solid #ddd; padding: 12px;">👺</td>
+<td style="border: 1px solid #ddd; padding: 12px;">75</td>
+<td style="border: 1px solid #ddd; padding: 12px;">2 TON</td>
+<td style="border: 1px solid #ddd; padding: 12px;">48 часов</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">Зомби</td>
+<td style="border: 1px solid #ddd; padding: 12px;">🧟</td>
+<td style="border: 1px solid #ddd; padding: 12px;">100</td>
+<td style="border: 1px solid #ddd; padding: 12px;">3 TON</td>
+<td style="border: 1px solid #ddd; padding: 12px;">72 часа</td>
+</tr>
+</tbody></table>
+<br>
+<h4 id="mehanika-boya" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🎯 Механика боя</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>1. Спаун монстра:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><strong>Автоматический спаун:</strong> Слизень появляется ежедневно в 07:00 для всех пользователей без активного монстра</li>
+<li style="margin: 5px 0;"><strong>Ручной спаун:</strong> Через admin API (только администратор)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>2. Нанесение урона:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Урон = количество_повторений × коэффициент_упражнения
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Тренировка: 50 отжиманий
+Урон монстру: 50 × 0.5 = 25 HP
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>3. Победа:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Когда HP монстра = 0</li>
+<li style="margin: 5px 0;">Награда автоматически зачисляется на баланс</li>
+<li style="margin: 5px 0;">Уведомление о победе с суммой награды</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>4. Поражение:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Если время жизни монстра истекло (24/48/72 часа)</li>
+<li style="margin: 5px 0;">Монстр исчезает, награда не начисляется</li>
+<li style="margin: 5px 0;">Проверка происходит ежедневно в полночь</li>
+</ul>
+<br>
+<h4 id="otobrazhenie-progressa" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📊 Отображение прогресса</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;">После каждой тренировки показывается:</p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+⚔️ Монстр: Слизень 🟢
+❤️ HP: 25/50 ███████████░░░░░░░░░
+💥 Нанесено урона: 25
+⏰ Осталось: 18ч 23м
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="52-rejd-bossy" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">5.2 Рейд-боссы</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Концепция:</strong> Кооперативные события, где <strong>все пользователи атакуют одного общего босса</strong>. Победа = награда для всех участников!</p>
+<br>
+<h4 id="mehanika-rejd-bossov" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">👾 Механика рейд-боссов</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>1. Активация события:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Администратор создаёт рейд-босса через Liquibase миграцию или admin API</li>
+<li style="margin: 5px 0;">Указывается: название, эмодзи, описание, HP, дата начала/окончания</li>
+<li style="margin: 5px 0;">Событие автоматически становится активным</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Примеры боссов:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><strong>Король Лени</strong> 👑💤 — 500 HP, 24 часа</li>
+<li style="margin: 5px 0;"><strong>Прокрастинация</strong> 📱🛋️ — 2,000 HP, 7 дней</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>2. Нанесение урона:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Каждая тренировка любого пользователя наносит урон боссу</li>
+<li style="margin: 5px 0;">Урон рассчитывается так же: <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">reps × коэффициент</code></li>
+<li style="margin: 5px 0;">HP босса снижается для всех (общий прогресс)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>3. Milestone-уведомления:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Бот рассылает всем пользователям уведомления при достижении порогов:</p>
+<br>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><strong>50% HP:</strong> ⚡ "Герои! Босс ослаблен наполовину!"</li>
+<li style="margin: 5px 0;"><strong>25% HP:</strong> 🔥 "Ещё немного! Босс на грани поражения!"</li>
+<li style="margin: 5px 0;"><strong>10% HP:</strong> 💪 "Последний рывок! 10% HP осталось!"</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>4. Победа:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Когда HP босса = 0</li>
+<li style="margin: 5px 0;">Рассылка победного сообщения всем пользователям:</li>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+🎉 ПОБЕДА! Рейд-босс повержен!
+
+🏆 Лучшие герои:
+🥇 Иван Богатырь - 450 урона
+🥈 Пётр Силач - 380 урона
+🥉 Мария Воин - 320 урона
+
+👥 Всего участников: 127
+</pre>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>5. Поражение:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Если время истекло (endDate < now)</li>
+<li style="margin: 5px 0;">Рассылка поражения: ⏰ "Время вышло. Босс выжил. 💀"</li>
+<li style="margin: 5px 0;">Проверка каждые 5 минут (планировщик)</li>
+</ul>
+<br>
+<h4 id="tablica-liderov" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🏆 Таблица лидеров</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Отображается после каждой тренировки:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+⚔️ Рейд-Босс: Король Лени 👑💤
+❤️ HP: 180/500 ███████░░░░░░░░░░░░
+⏰ Осталось: 8ч 12м
+
+💥 Твой урон: 125 (🥈 2 место)
+
+🏆 Все участники:
+🥇 Иван - 150
+🥈 Ты - 125
+🥉 Пётр - 110
+4. Мария - 95
+5. Алексей - 80
+...
+</pre>
+<br>
+<h4 id="avtomaticheskaya-proverka" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">⏰ Автоматическая проверка</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Планировщик <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">RaidBossScheduler</code>:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Запускается каждые <strong>5 минут</strong>: <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">@Scheduled(cron = "0 <em>/5 </em> <em> </em> *")</code></li>
+<li style="margin: 5px 0;">Проверяет активные события с истёкшим временем</li>
+<li style="margin: 5px 0;">Деактивирует событие и рассылает поражение</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="6-socialnye-funkcii" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">6. Социальные функции</h2>
+<br>
+<h3 id="61-liderbordy" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">6.1 Лидерборды</h3>
+<br>
+<h4 id="komanda-leaderboard" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🏆 Команда `/leaderboard`</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Синонимы:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/лидерборд</code>, <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/lb</code>, <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/rating</code>, <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/рейтинг</code></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Формат:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/leaderboard [период]</code></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Доступные периоды:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">today</code> — за сегодня</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">yesterday</code> — за вчера</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">week</code> — за неделю</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">month</code> — за месяц</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">year</code> — за год</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">all</code> — за всё время (по умолчанию)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Типы лидербордов:</strong></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>1. Общий рейтинг</strong> (по XP):</p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+🏆 Рейтинг 🏆
+(За всё время)
+
+🥇 Иван Богатырь - 35,000 XP (Воевода)
+🥈 Пётр Силач - 28,500 XP (Мастер)
+🥉 Мария Воин - 22,100 XP (Тысячник)
+4. Алексей - 18,700 XP (Кузнец тела)
+5. Дмитрий - 15,200 XP (Варяг)
+
+Ваше место: 12 (9,800 XP)
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>2. По упражнениям:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Отдельные топы для каждого упражнения:</p>
+<br>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+⚡ Таблица лидеров ⚡
+Отжимания (За неделю)
+
+🥇 Иван - 1,250 повторений
+🥈 Пётр - 980 повторений
+🥉 Мария - 850 повторений
+4. Алексей - 720 повторений
+5. Дмитрий - 650 повторений
+
+Всего пользователи сделали: 8,450 отжиманий.
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Интерактивное меню:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Кнопки выбора периода</li>
+<li style="margin: 5px 0;">Кнопки выбора упражнения</li>
+<li style="margin: 5px 0;">Возврат к общему рейтингу</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="62-podpiski" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">6.2 Подписки</h3>
+<br>
+<h4 id="sistema-podpisok" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">👥 Система подписок</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Функция:</strong> Подписывайся на других пользователей и получай уведомления об их тренировках!</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как подписаться:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Через интерактивное меню с кнопками в боте</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что происходит при подписке:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">✅ Вы начинаете получать уведомления о тренировках друга</li>
+<li style="margin: 5px 0;">🔔 Уведомления при побитии личного рекорда</li>
+<li style="margin: 5px 0;">📊 Доступ к сравнению прогресса</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Уведомления:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+🔥 Твой друг Иван Богатырь побил личный рекорд в Отжимания: 95!
+
+или
+
+👥 Твой друг Пётр Силач выполнил тренировку:
+• Подтягивания (15)
+• Приседания (120)
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="63-referalnaya-sistema" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">6.3 Реферальная система</h3>
+<br>
+<h4 id="priglashenie-druzej" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🤝 Приглашение друзей</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как получить реферальную ссылку:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">При регистрации каждому пользователю присваивается уникальный реферальный код</li>
+<li style="margin: 5px 0;">Ссылка формата: <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892?start=ref_{your_telegram_id}</code></li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что даёт:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><strong>Вам:</strong> +50 XP за каждого зарегистрированного друга</li>
+<li style="margin: 5px 0;"><strong>Вам:</strong> Прогресс к реферальным достижениям (1/3/10/25/50/100/250/500 друзей)</li>
+<li style="margin: 5px 0;"><strong>Другу:</strong> Стартовый бонус при регистрации (если настроено)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как посмотреть список рефералов:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Информация доступна в профиле бота</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример вывода:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+Пользователей приглашено: 12
+
+1. Иван Богатырь (Ратник, 5,200 XP)
+2. Пётр Силач (Дружинник, 8,200 XP)
+3. Мария Воин (Богатырь, 10,000 XP)
+...
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="7-sistema-serij" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">7. Система серий</h2>
+<br>
+<h3 id="71-otslezhivanie-serij" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">7.1 Отслеживание серий</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>🔥 Что такое серия?</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Количество дней подряд, когда вы делали хотя бы одну тренировку.</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Условие продолжения:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Не более 24 часов между тренировками</li>
+<li style="margin: 5px 0;">Любое упражнение засчитывается</li>
+<li style="margin: 5px 0;">Не важно количество повторений</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как отслеживать:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+/profile — показывает текущую серию и рекорд
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Примеры уведомлений:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+🔥 Серия: 0. Начни сегодня!
+
+🔥 Серия: 7 дней подряд. Рекорд: 15.
+
+🔥 Серия: 20 дней подряд. (Новый рекорд! 🎉)
+
+🔥 Серия потеряна. Лучший результат: 15 дней. 
+Прошло дней без тренировки: 3.
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h3 id="72-sohranenie-serii" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">7.2 Сохранение серии</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>💵 Функция страховки серии</strong></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;">Если вы пропустили <strong>1 день</strong> (не более 48 часов с последней тренировки), можно <strong>купить продление серии за 1 TON</strong>.</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Условия:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">✅ Прошло 24-48 часов с последней тренировки</li>
+<li style="margin: 5px 0;">✅ На балансе есть минимум 1 TON</li>
+<li style="margin: 5px 0;">❌ Нельзя сохранить серию, если прошло более 2 дней</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как сохранить:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Используйте команду в боте для сохранения серии</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Ответы:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+✅ Серия сохранена за 1 TON.
+
+❌ Серию нельзя сохранить, от последней тренировки прошло более 2-х дней.
+
+❌ Недостаточно TON для сохранения серии.
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Стратегия:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Используйте для защиты длинных серий (20+ дней), когда достижения за серию дороже 1 TON.</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="8-personalnye-nastrojki" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">8. Персональные настройки</h2>
+<br>
+<h3 id="komanda-settings" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">⚙️ Команда `/settings`</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Описание:</strong> Управление персональными уведомлениями после тренировок.</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Доступные настройки:</strong></p>
+<br>
+<table style="border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #ccc;">
+<thead><tr>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Настройка</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Код</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">Описание</th>
+<th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; font-weight: bold; text-align: left;">По умолчанию</th>
+</tr></thead><tbody>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">🎯 Прогресс к рангу</td>
+<td style="border: 1px solid #ddd; padding: 12px;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">notification.rank_hints</code></td>
+<td style="border: 1px solid #ddd; padding: 12px;">Показывать сколько XP до следующего ранга</td>
+<td style="border: 1px solid #ddd; padding: 12px;">✅ Включено</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">🏆 Достижения</td>
+<td style="border: 1px solid #ddd; padding: 12px;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">notification.achievement_hints</code></td>
+<td style="border: 1px solid #ddd; padding: 12px;">Показывать следующее достижение и прогресс</td>
+<td style="border: 1px solid #ddd; padding: 12px;">✅ Включено</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">⚔️ Битвы</td>
+<td style="border: 1px solid #ddd; padding: 12px;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">notification.battle_info</code></td>
+<td style="border: 1px solid #ddd; padding: 12px;">Информация о рейд-боссах и монстрах</td>
+<td style="border: 1px solid #ddd; padding: 12px;">✅ Включено</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ddd; padding: 12px;">🔥 Серия</td>
+<td style="border: 1px solid #ddd; padding: 12px;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">notification.streak_info</code></td>
+<td style="border: 1px solid #ddd; padding: 12px;">Статус текущей серии тренировок</td>
+<td style="border: 1px solid #ddd; padding: 12px;">✅ Включено</td>
+</tr>
+</tbody></table>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как использовать:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">1. Отправьте <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/settings</code></p>
+<p style="margin: 10px 0; line-height: 1.6;">2. Бот покажет интерактивное меню с кнопками</p>
+<p style="margin: 10px 0; line-height: 1.6;">3. Нажмите на настройку для переключения (вкл/выкл)</p>
+<p style="margin: 10px 0; line-height: 1.6;">4. Статус сохраняется автоматически</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Интерактивное меню:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+⚙️ Персональные настройки уведомлений
+
+🔔 Уведомления
+
+🎯 Прогресс к следующему рангу
+Показывать сколько XP осталось до повышения
+[Включено ✅]
+
+🏆 Достижения
+Показывать следующее достижение и прогресс
+[Включено ✅]
+
+⚔️ Битвы
+Показывать информацию о рейд-боссах и монстрах
+[Выключено ❌]
+
+🔥 Серия
+Показывать информацию о текущей серии
+[Включено ✅]
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Система настроек:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><strong>Default-first pattern:</strong> Настройки по умолчанию для всех пользователей</li>
+<li style="margin: 5px 0;"><strong>Sparse storage:</strong> Сохраняются только ваши изменения</li>
+<li style="margin: 5px 0;">Отсутствие изменений = использование значения по умолчанию</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="9-pitanie-i-makrosy" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">9. Питание и макросы</h2>
+<br>
+<h3 id="sistema-pitaniya" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">🥗 Система питания</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Функции:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Персональный расчёт калорий и макронутриентов</li>
+<li style="margin: 5px 0;">Логирование приёмов пищи</li>
+<li style="margin: 5px 0;">Отслеживание веса</li>
+<li style="margin: 5px 0;">Прогресс к целевому весу</li>
+</ul>
+<br>
+<h4 id="sozdanie-profilya-pitaniya" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📊 Создание профиля питания</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Параметры для настройки:</strong></p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Уровни активности:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Минимальная (0-1 тренировок/неделю)</li>
+<li style="margin: 5px 0;">Лёгкая (1-2 тренировок/неделю)</li>
+<li style="margin: 5px 0;">Умеренная (3-4 тренировок/неделю)</li>
+<li style="margin: 5px 0;">Активная (5-6 тренировок/неделю)</li>
+<li style="margin: 5px 0;">Очень активная (7+ тренировок/неделю)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Цели:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Снижение веса</li>
+<li style="margin: 5px 0;">Поддержание веса</li>
+<li style="margin: 5px 0;">Набор массы</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Скорость изменения:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Медленно (0.25 кг/нед)</li>
+<li style="margin: 5px 0;">Оптимально (0.5 кг/нед)</li>
+<li style="margin: 5px 0;">Быстро (1 кг/нед)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример результата:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+✅ Ваш персональный план создан!
+
+📊 Ваши данные:
+• Текущий вес: 80 кг
+• Целевой вес: 75 кг
+• Изменение: -5 кг
+
+⏱ Прогноз достижения цели: 10 недель
+Темп изменения: 0.5 кг в неделю
+
+🎯 Ваша дневная норма:
+🔥 Калории: 2,100 ккал
+🥩 Белки: 150г
+🥑 Жиры: 70г
+🍞 Углеводы: 210г
+
+📖 Расчёты основаны на:
+• Формула Миффлина-Сан Жеора (1990)
+• Ваш уровень активности: Умеренная
+• Ваша цель: Снижение веса
+</pre>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Формула расчёта (Mifflin-St Jeor):</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+BMR (мужчины) = 10 × вес + 6.25 × рост - 5 × возраст + 5
+BMR (женщины) = 10 × вес + 6.25 × рост - 5 × возраст - 161
+
+TDEE = BMR × коэффициент_активности
+Калории = TDEE ± дефицит/профицит (в зависимости от цели)
+</pre>
+<br>
+<h4 id="logirovanie-priyoma-pishhi" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">🍽️ Логирование приёма пищи</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что нужно указать:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Название приёма пищи</li>
+<li style="margin: 5px 0;">Калории</li>
+<li style="margin: 5px 0;">Белки (граммы)</li>
+<li style="margin: 5px 0;">Жиры (граммы)</li>
+<li style="margin: 5px 0;">Углеводы (граммы)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример результата:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+✅ Приём пищи записан!
+
+🍽 Завтрак: овсянка с бананом
+🔥 Калории: 350 ккал
+🥩 Белки: 12г | 🥑 Жиры: 8г | 🍞 Углеводы: 60г
+
+📊 Итого за сегодня:
+850/2,100 ккал (40%)
+Белки: 45/150г | Жиры: 28/70г | Углеводы: 110/210г
+</pre>
+<br>
+<h4 id="logirovanie-vesa" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">⚖️ Логирование веса</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример результата:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+✅ Вес зафиксирован: 78.5 кг (↓ -1.5 кг от начала)
+</pre>
+<br>
+<h4 id="itogi-za-period" style="font-size: 20px; font-weight: bold; margin-top: 15px; margin-bottom: 8px;">📈 Итоги за период</h4>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Пример результата:</strong></p>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace;">
+📊 Итоги за 15.01.2024:
+🔥 Калории: 1,980/2,100 ккал (94%)
+🥩 Белки: 145/150г
+🥑 Жиры: 68/70г
+🍞 Углеводы: 205/210г
+</pre>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="10-multiyazychnost" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">10. Мультиязычность</h2>
+<br>
+<h3 id="podderzhka-yazykov" style="font-size: 24px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">🌍 Поддержка языков</h3>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Доступные языки:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">🇷🇺 Русский (ru) — по умолчанию</li>
+<li style="margin: 5px 0;">🇬🇧 English (en)</li>
+<li style="margin: 5px 0;">🇺🇦 Українська (uk)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Как изменить язык:</strong></p>
+<p style="margin: 10px 0; line-height: 1.6;">Используйте настройки бота для смены языка интерфейса</p>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Что локализовано:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Все команды и уведомления бота</li>
+<li style="margin: 5px 0;">Названия упражнений</li>
+<li style="margin: 5px 0;">Названия рангов (24 ранга × 3 языка)</li>
+<li style="margin: 5px 0;">Названия достижений (80+ достижений × 3 языка)</li>
+<li style="margin: 5px 0;">Описания достижений</li>
+<li style="margin: 5px 0;">Системные сообщения</li>
+<li style="margin: 5px 0;">Ошибки и валидации</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Источники локализации:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/resources/messages/messages_ru.properties</code> — 24,000+ строк</li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/resources/messages/messages_en.properties</code></li>
+<li style="margin: 5px 0;"><code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">/resources/messages/messages_uk.properties</code></li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Автоопределение:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">При первом запуске бот пытается определить язык по настройкам Telegram</li>
+<li style="margin: 5px 0;">Если не удалось — устанавливается русский</li>
+<li style="margin: 5px 0;">Можно изменить в любой момент через API</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="nachalo-raboty" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">🚀 Начало работы</h2>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;">1. <strong>Найдите бота:</strong> [@SquatMasterBot](https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892)</p>
+<p style="margin: 10px 0; line-height: 1.6;">2. <strong>Нажмите "Старт"</strong> — автоматическая регистрация</p>
+<p style="margin: 10px 0; line-height: 1.6;">3. <strong>Запишите первую тренировку:</strong> <code style="background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace;">50 отжимания</code></p>
+<p style="margin: 10px 0; line-height: 1.6;">4. <strong>Получите первое достижение</strong> и TON-награду! 🎉</p>
+<p style="margin: 10px 0; line-height: 1.6;">5. <strong>Пригласите друзей</strong> по реферальной ссылке — +50 XP за каждого</p>
+<p style="margin: 10px 0; line-height: 1.6;">6. <strong>Участвуйте в рейд-боссах</strong> — кооперативные события</p>
+<p style="margin: 10px 0; line-height: 1.6;">7. <strong>Побеждайте монстров</strong> — личные челленджи</p>
+<p style="margin: 10px 0; line-height: 1.6;">8. <strong>Стремитесь к рангу "Божество"</strong> — 29-й ранг</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="podderzhka" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">📞 Поддержка</h2>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Live Bot:</strong> [@SquatMasterBot](https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892)  </p>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Website:</strong> https://squatmasterbot.tg.pulse.is/  </p>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>GitHub:</strong> DenKaydunov/SportBot</p>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+<h2 id="vazhnye-primechaniya" style="font-size: 28px; font-weight: bold; margin-top: 25px; margin-bottom: 12px;">⚠️ Важные примечания</h2>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Приватность:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Бот не хранит личную переписку</li>
+<li style="margin: 5px 0;">Все данные тренировок анонимизированы в публичных лидербордах</li>
+<li style="margin: 5px 0;">Вы можете удалить свой аккаунт в любой момент</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>TON-токены:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Награды начисляются автоматически</li>
+<li style="margin: 5px 0;">Вывод TON планируется в будущих обновлениях</li>
+<li style="margin: 5px 0;">Токены можно использовать внутри бота (сохранение серии, будущий магазин)</li>
+</ul>
+<br>
+<p style="margin: 10px 0; line-height: 1.6;"><strong>Технические требования:</strong></p>
+<ul style="margin: 10px 0; padding-left: 25px;">
+<li style="margin: 5px 0;">Telegram аккаунт</li>
+<li style="margin: 5px 0;">Стабильное интернет-соединение для Mini Apps (календарь)</li>
+</ul>
+<br>
+<hr style="border: 1px solid #ccc; margin: 20px 0;">
+<br>
+    </div>
+
+    <footer>
+        <p><strong>SportBot</strong> — Превращай тренировки в достижения!</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">
+            <a href="index.html">Главная</a> |
+            <a href="https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892" target="_blank">Telegram</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.6;">&copy; 2026 SportBot</p>
+    </footer>
+</body>
+</html>

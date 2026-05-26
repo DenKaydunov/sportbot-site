@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Руководство SportBot | Полная документация</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7FD957;
+            --primary-dark: #6BC745;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+            --gray: #666666;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #E8E8E8;
+        }
+
+        /* Header */
+        header {
+            background: #323232;
+            color: var(--white);
+            padding: 0.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: visible;
+            min-height: 60px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+            position: relative;
+        }
+
+        .logo img {
+            height: 130px;
+            margin-top: -20px;
+            margin-bottom: -50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo span {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin: 2rem 0 1rem 0;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: #dbeafe;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid var(--primary);
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+
+        /* Code */
+        code {
+            background: var(--light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: var(--dark);
+            color: #a5b4fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #a5b4fc;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light);
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--light);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        /* Images */
+        .monster-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .monster-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .monster-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .monster-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .monster-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .monster-stats {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Button */
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(127, 217, 87, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 60px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            .logo span {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #323232;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                min-width: 200px;
+                z-index: 200;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--primary) 0%, #6BC745 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 90%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="SportBot logo.png" alt="SportBot">
+                <span>SportBot</span>
+            </a>
+            <nav>
+                <button class="menu-toggle" onclick="document.querySelector('#guide-nav').classList.toggle('open')">☰</button>
+                <ul class="nav-links" id="guide-nav">
+                    <li><a href="#commands">Команды</a></li>
+                    <li><a href="#ranks">Ранги</a></li>
+                    <li><a href="#achievements">Достижения</a></li>
+                    <li><a href="#battles">Битвы</a></li>
+                    <li><a href="commands.html">📖 Все команды</a></li>
+                    <li><a href="https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892" target="_blank">⚔️ Бот</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="intro">
+            <h1>📖 Полное руководство</h1>
+            <p style="font-size: 1.25rem; color: var(--gray); margin-bottom: 2rem;">
+                Всё что нужно знать о SportBot — от первых шагов до легендарных достижений
+            </p>
+
+            <div class="success-box">
+            </div>
+        </section>
+
+        <section id="commands">
+            <h2>📝 Основные команды</h2>
+
+            <h3>Регистрация и профиль</h3>
+
+            <h4>👤 Автоматическая регистрация</h4>
+            <p>Происходит при первом взаимодействии с ботом. Система создаёт профиль и назначает начальный ранг <strong>"Зерно"</strong>.</p>
+
+            <p><strong>Что происходит:</strong></p>
+            <ul>
+                <li>Создание профиля с уникальным Telegram ID</li>
+                <li>Присвоение начального ранга "Зерно"</li>
+                <li>Установка языка по умолчанию (русский)</li>
+                <li>Обнуление счётчиков</li>
+            </ul>
+
+            <h4>📝 Команда /profile</h4>
+
+            <p><strong>Показывает:</strong></p>
+            <ul>
+                <li>📝 Имя пользователя</li>
+                <li>📈 Возраст и пол</li>
+                <li>🌐 Язык интерфейса (русский/English/українська)</li>
+                <li>💵 Баланс игровых монет</li>
+                <li>⏰ Время тренировки</li>
+                <li>🏋️ Прогресс по упражнениям (всего/максимум)</li>
+                <li>⚔ Текущий ранг</li>
+                <li>💎 Опыт и прогресс-бар</li>
+            </ul>
+
+            <h3>Запись тренировок</h3>
+
+            <div class="info-box">
+                <strong>💡 Совет:</strong> После записи тренировки происходит автоматическое начисление опыта, проверка достижений и нанесение урона монстрам/боссам!
+            </div>
+
+            <h4>📈 Команда /graph</h4>
+            <p><strong>Формат:</strong> <code>/graph [упражнение] [период]</code></p>
+            <p>Генерирует визуальный график тренировок с двумя линиями: сумма за день и максимум за тренировку.</p>
+
+            <p><strong>Примеры:</strong></p>
+            <ul>
+                <li><code>/graph</code> — интерактивное меню</li>
+                <li><code>/graph pushups week</code> — график отжиманий за неделю</li>
+                <li><code>/graph pullups month</code> — подтягивания за месяц</li>
+            </ul>
+
+            <h4>📅 Команда /calendar</h4>
+            <p>Открывает интерактивный <strong>Telegram Mini App</strong> с календарём тренировок.</p>
+        </section>
+
+        <section id="ranks">
+            <h2>⚔ Система рангов</h2>
+
+            <h3>30 уровней прогрессии</h3>
+            <p>От новичка до божества с русской мифологической тематикой:</p>
+
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Ранг (EN)</th>
+                        <th>Название (RU)</th>
+                        <th>Требуется XP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Seed</td><td>Зерно</td><td>0</td></tr>
+                    <tr><td>2</td><td>Sprout</td><td>Росток</td><td>100</td></tr>
+                    <tr><td>5</td><td>Youth</td><td>Отрок</td><td>1,000</td></tr>
+                    <tr><td>10</td><td>Warrior</td><td>Ратник</td><td>5,200</td></tr>
+                    <tr><td>13</td><td>Bogatyr</td><td>Богатырь</td><td>10,000</td></tr>
+                    <tr><td>18</td><td>Voivode</td><td>Воевода</td><td>25,000</td></tr>
+                    <tr><td>29</td><td>Deity</td><td>Божество</td><td>135,000</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>💎 Как получить опыт</h3>
+
+            <h4>1. Тренировки (основной источник)</h4>
+            <pre><code>XP = количество_повторений × коэффициент_упражнения</code></pre>
+
+            <p><strong>Пример расчёта дневного опыта:</strong></p>
+            <ul>
+                <li>50 отжиманий = 50 × 0.5 = <strong>25 XP</strong></li>
+                <li>10 подтягиваний = 10 × 1.0 = <strong>10 XP</strong></li>
+                <li>100 приседаний = 100 × 0.3 = <strong>30 XP</strong></li>
+                <li>40 пресса = 40 × 0.4 = <strong>16 XP</strong></li>
+            </ul>
+            <p><strong>Итого: 81 XP за день</strong></p>
+
+            <h4>2. Рефералы (бонусный источник)</h4>
+            <p>За каждого приглашённого друга: <span class="highlight"><strong>+50 XP</strong></span></p>
+        </section>
+
+        <section id="achievements">
+            <h2>🏆 Достижения</h2>
+
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">
+                <strong>80+ уникальных достижений</strong> в 9 категориях с игровыми наградами
+            </p>
+
+            <h3>🔥 Серии (STREAK)</h3>
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Описание</th>
+                        <th>Дней</th>
+                        <th>Награда</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Искра</td><td>10 дней подряд без перерыва</td><td>10</td><td>1 монета</td></tr>
+                    <tr><td>Пламя</td><td>20 дней стабильных тренировок</td><td>20</td><td>2 монеты</td></tr>
+                    <tr><td>Пожар силы</td><td>50 дней настоящей силы</td><td>50</td><td>5 монет</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="warning-box">
+                ⚠️ <strong>Важно:</strong> Серия сбрасывается при пропуске дня (более 24 часов без тренировки). Можно купить продление за 1 монету в течение 48 часов.
+            </div>
+
+            <h3>💪 Путь богатыря (Отжимания TOTAL)</h3>
+            <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Всего повторений</th>
+                        <th>Награда</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Оруженосец</td><td>100</td><td>0.5 монеты</td></tr>
+                    <tr><td>Дружинник</td><td>500</td><td>1 монета</td></tr>
+                    <tr><td>Витязь</td><td>1,000</td><td>2 монеты</td></tr>
+                    <tr><td>Богатырь</td><td>5,000</td><td>5 монет</td></tr>
+                    <tr><td>Кибер-воин</td><td>10,000</td><td>10 монет</td></tr>
+                    <tr><td>Титан механики</td><td>50,000</td><td>25 монет</td></tr>
+                    <tr><td>Квантовый колосс</td><td>100,000</td><td>50 монет</td></tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="info-box">
+                💡 <strong>Подсказка:</strong> Аналогичные достижения доступны для подтягиваний, приседаний и пресса! Каждое упражнение имеет свою уникальную тематику.
+            </div>
+        </section>
+
+        <section id="battles">
+            <h2>⚔️ Боевая система</h2>
+
+            <h3>👹 Личные монстры</h3>
+            <p><strong>Концепция:</strong> У каждого пользователя свой персональный монстр. Тренировки наносят урон. Победа = игровая награда!</p>
+
+            <div class="monster-gallery">
+                <div class="monster-card">
+                    <img src="img/monster/0001 Slime 50 HP.png" alt="Слизень">
+                    <div class="monster-name">🟢 Слизень</div>
+                    <div class="monster-stats">HP: 50 | Награда: 1 монета | 24 часа</div>
+                </div>
+                <div class="monster-card">
+                    <img src="img/monster/0002 Goblin 75 HP.png" alt="Гоблин">
+                    <div class="monster-name">👺 Гоблин</div>
+                    <div class="monster-stats">HP: 75 | Награда: 2 монеты | 48 часов</div>
+                </div>
+                <div class="monster-card">
+                    <img src="img/monster/0003 Zombie 100 HP.png" alt="Зомби">
+                    <div class="monster-name">🧟 Зомби</div>
+                    <div class="monster-stats">HP: 100 | Награда: 3 монеты | 72 часа</div>
+                </div>
+            </div>
+
+            <p><strong>Механика урона:</strong></p>
+            <pre><code>Урон = количество_повторений × коэффициент_упражнения
+
+Пример: 50 отжиманий → 50 × 0.5 = 25 HP урона</code></pre>
+
+            <h3>👾 Рейд-боссы</h3>
+            <p><strong>Концепция:</strong> Кооперативные события, где <span class="highlight" style="background: linear-gradient(120deg, #7FD957 0%, #6BC745 100%); color: #1A1A1A; padding: 2px 8px; border-radius: 4px; font-weight: 700;">все пользователи атакуют одного общего босса</span>!</p>
+
+            <img src="img/monster/King 24h battle.png" alt="Рейд-Босс: Король Лени" style="width: 100%; max-width: 600px; border-radius: 12px; margin: 2rem auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+
+            <p><strong>Milestone-уведомления:</strong></p>
+            <ul>
+                <li>50% HP: ⚡ "Герои! Босс ослаблен наполовину!"</li>
+                <li>25% HP: 🔥 "Ещё немного! Босс на грани поражения!"</li>
+                <li>10% HP: 💪 "Последний рывок! 10% HP осталось!"</li>
+            </ul>
+
+            <div class="success-box">
+                🎉 <strong>Победа:</strong> Рассылка всем пользователям с топ-3 героями (🥇🥈🥉) и общим количеством участников!
+            </div>
+        </section>
+
+        <section id="social">
+            <h2>👥 Социальные функции</h2>
+
+            <h3>🏆 Лидерборды</h3>
+            <p><strong>Команда:</strong> <code>/leaderboard</code></p>
+
+            <p><strong>Доступные периоды:</strong> Сегодня, Вчера, Неделя, Месяц, Год, Всё время</p>
+
+            <h3>👥 Подписки</h3>
+            <p>Подписывайся на других пользователей и получай уведомления об их тренировках и рекордах!</p>
+
+            <h3>🤝 Реферальная система</h3>
+            <p><strong>Бонусы:</strong></p>
+            <ul>
+                <li><strong>Вам:</strong> +50 XP за каждого друга</li>
+                <li><strong>Вам:</strong> Прогресс к реферальным достижениям (до 500 друзей!)</li>
+            </ul>
+        </section>
+
+        <section id="settings">
+            <h2>⚙️ Настройки</h2>
+
+            <p><strong>Команда:</strong> <code>/settings</code></p>
+
+            <p>Управление уведомлениями после тренировок:</p>
+            <ul>
+                <li>🎯 Прогресс к рангу</li>
+                <li>🏆 Достижения</li>
+                <li>⚔️ Битвы (монстры и боссы)</li>
+                <li>🔥 Серия тренировок</li>
+            </ul>
+
+            <p>Всё переключается через интерактивное меню с кнопками!</p>
+        </section>
+
+        <section style="text-align: center; padding: 3rem 0;">
+            <a href="https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892" class="btn-primary" target="_blank">Запустить SportBot</a>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>SportBot</strong> — Превращай тренировки в достижения!</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">
+            <a href="index.html">Главная</a> |
+            <a href="https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892" target="_blank">Telegram</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.6;">&copy; 2026 SportBot</p>
+    </footer>
+</body>
+</html>
