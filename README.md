@@ -1,4 +1,4 @@
-# SquatMasterBot Documentation Site
+# SportBot Documentation Site
 
 Статический сайт-документация для Telegram бота [@SquatMasterBot](https://tg.pulse.is/SquatMasterBot?start=68272210e7d3bb3e50024c24|user_referrer_id=676150892).
 
